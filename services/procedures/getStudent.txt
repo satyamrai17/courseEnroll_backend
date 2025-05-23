@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getStudent`()
+BEGIN
+SELECT * FROM students;
+END

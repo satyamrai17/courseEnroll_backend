@@ -1,0 +1,8 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `createStudent`(
+IN student_id INT,
+IN student_name varchar(60),
+IN student_email varchar(60)
+)
+BEGIN
+INSERT INTO students(studentID, studentName, email) values(student_id, student_name, student_email);
+END

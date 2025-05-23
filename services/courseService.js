@@ -2,7 +2,8 @@ const db= require('../config/db')
 
 const courseService ={
     getCourse: async()=>{
-        const [course] = await db.query("SELECT * FROM courses")
+        // const [course] = await db.query("SELECT * FROM courses")
+        const [course] = await db.query("call getCourse")
         return course;
     },
 

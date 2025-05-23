@@ -1,0 +1,26 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getEnrollmentDetails`(
+  IN stdID INT,
+  OUT result_json JSON
+)
+BEGIN
+  SELECT JSON_OBJECT(
+    'studentID', s.studentID,
+    'studentName', s.studentName,
+    'email', s.email,
+    'courses', (
+      SELECT JSON_ARRAYAGG(
+        JSON_OBJECT(
+          'courseID', c.courseID,
+          'courseTitle', c.courseTitle,
+          'courseDuration', c.courseDuration,
+          'enrolled_at', e.enrolled_at
+        )
+      )
+      FROM enrollments e
+      JOIN courses c ON c.courseID = e.courseID
+      WHERE e.studentID = s.studentID
+    )
+  ) INTO result_json
+  FROM students s
+  WHERE s.studentID = stdID;
+END

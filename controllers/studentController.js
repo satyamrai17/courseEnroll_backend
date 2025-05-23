@@ -19,6 +19,26 @@ const studentController = {
       next(error);
     }
   },
+  getEnrollmentDetail: async(req, res, next)=>{
+        try {
+            const {studentID} = req.params;
+            const result=await studentService.getEnrollByStudentID(studentID)
+            res.json({data: result})
+        } catch (error) {
+            next(error)
+        }
+    },
+
+    joinpractice:async (req, res, next)=>{
+        try {
+            const result= await studentService.joinPractice();
+            res.json({data:result})
+        } catch (error) {
+            res.json({"error": error})
+        }
+    }
 };
+
+    
 
 module.exports = { studentController };

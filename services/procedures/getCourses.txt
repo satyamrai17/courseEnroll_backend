@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getCourse`()
+BEGIN
+SELECT * FROM courses;
+END

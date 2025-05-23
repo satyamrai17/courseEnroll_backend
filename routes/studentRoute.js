@@ -6,6 +6,8 @@ const router=Router()
 
 router.get("/", studentController.getstudent);
 router.post("/", validateRequest(studentSchema), studentController.createstudent);
+router.get("enrollment/:studentID", studentController.getEnrollmentDetail)
+router.get("/practice", studentController.joinpractice)
 
 
 module.exports= router;

@@ -1,0 +1,6 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `joinPractice`()
+BEGIN
+	SELECT * FROM students s
+    LEFT JOIN enrollments e 
+    ON s.studentID = e.studentID;
+END
